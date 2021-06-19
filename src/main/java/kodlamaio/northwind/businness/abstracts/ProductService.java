@@ -16,9 +16,9 @@ public interface ProductService {
     DataResult<Product> getByProductNameAndCategoryId(String productName,int categoryId);
 
     //select*from products where product_name=productname and categoryId=1
-    DataResult<List<Product>> getByProductNameOrCategoryId(String productName,int categoryId);
+    DataResult<List<Product>> getByProductNameOrCategory(String productName,int categoryId);
 
-    DataResult<List<Product>> getByCategoryIdIn(List<Integer> categories);//select* from products where category_id in(1,2,3,4)
+    DataResult<List<Product>> getByCategoryIn(List<Integer> categories);//select* from products where category_id in(1,2,3,4)
 
     DataResult<List<Product>> getByProductNameContains(String productName);//Contains (İçeren)
 

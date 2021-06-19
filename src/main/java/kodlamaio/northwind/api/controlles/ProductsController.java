@@ -30,4 +30,10 @@ public class ProductsController {//Android/İos/web dış dünyanın sistemle il
     public Result add(@RequestBody Product product){
         return this.productService.add(product);
     }
+
+    @GetMapping("getByProductName")//@RequestParam->yapılan isteğin parametrelerine bak productname diye birşey olacak
+    // oradan onu oku ve productname i bana gönder
+    public DataResult<Product> getByProductName(@RequestParam String productName){
+        return this.productService.getByProductName(productName);
+    }
 }
