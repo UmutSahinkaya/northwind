@@ -1,6 +1,7 @@
 package kodlamaio.northwind.dataAccess.abstracts;
 
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -23,4 +24,11 @@ List<Product> getByProductNameStartsWith(String productName);//ürün isimleri �
 
     @Query("From Product where productName=:productName and category.categoryId=:categoryId")
     List<Product> getByNameAndCategory(String productName,int categoryId);
+
+    //DTO KISIM KODLARI
+    //Select p.product_id,p.product_name,c.category_name from Category c inner join Product p on c.CategoryId=p.categoryId
+    @Query("Select new kodlamaio.northwind.entities.dtos.ProductWithCategoryDto" +
+            "(p.id,p.productName,c.categoryName)" +
+            " From Category c Inner Join c.products p")
+    List<ProductWithCategoryDto> getProductWithCategoryDetails();
 }
